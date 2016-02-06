@@ -1,0 +1,22 @@
+---
+- name: Debian | install unattended-upgrades
+  apt:
+   name=unattended-upgrades
+   update_cache=yes
+   state=latest
+
+- name: Print unattended_upgrades
+  debug:
+    msg=" {{ unattended_upgrades }}"
+
+
+- name: Debian | copy unattended_upgrades file to /etc/apt/apt.conf.d
+  template:
+   src={{ unattended_upgrades }}
+   dest=/etc/apt/apt.conf.d/50unattended-upgrades
+
+
+- name: Debian | copy periodic file to /etc/apt/apt.conf.d/10periodic
+  template:
+   src={{ periodic }}
+   dest=/etc/apt/apt.conf.d/10periodic
