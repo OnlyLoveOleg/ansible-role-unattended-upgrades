@@ -1,0 +1,4 @@
+---
+unattended_upgrades:
+  unattended50: "Ubuntu/14/50unattended-upgrades.j2"
+  periodic10: "Ubuntu/14/10periodic.j2"

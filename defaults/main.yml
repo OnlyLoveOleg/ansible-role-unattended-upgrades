@@ -1,3 +1,0 @@
----
-unattended_upgrades: Debian/50unattended-upgrades.j2
-periodic: Debian/10periodic.j2

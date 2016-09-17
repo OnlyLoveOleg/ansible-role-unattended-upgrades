@@ -1,0 +1,24 @@
+---
+# https://help.ubuntu.com/lts/serverguide/automatic-updates.html
+#
+- name: Ubuntu-16 | install unattended-upgrades package
+  apt:
+   name=unattended-upgrades
+   update_cache=yes
+   state=latest
+
+- name: print unattended_upgrades variable
+  debug:
+    msg="{{ unattended_upgrades }}"
+
+
+- name: Ubuntu-16 | copy 50unattended-upgrades file to /etc/apt/apt.conf.d/50unattended-upgrades
+  template:
+   src="{{ unattended_upgrades.unattended50 }}"
+   dest=/etc/apt/apt.conf.d/50unattended-upgrades
+
+
+- name: Ubuntu-16 | copy 10periodic file to /etc/apt/apt.conf.d/10periodic
+  template:
+   src="{{ unattended_upgrades.periodic10 }}"
+   dest=/etc/apt/apt.conf.d/10periodic
